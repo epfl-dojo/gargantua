@@ -32,7 +32,7 @@ server.route([
   },
   {
     method: 'POST',
-    path: '/hello2',
+    path: '/push',
     handler: helloPostHandler
   }
 ]);
