@@ -11,13 +11,11 @@ server.connection({
 
 const db = require("./db.js")("logs");
 
-const helloPostHandler = function(request, reply) {
+const pushPostHandler = function(request, reply) {
+    console.log("Received POST : " + JSON.stringify(request.payload));
     db.insert(request.payload, function(){
-        console.log("Received POST from " + request.payload.name + "; id=" + (request.payload.id || 'anon'));
-    });
-
-    reply({
-        greeting: 'POST hello to ' + request.payload.name
+        console.log("Stored with _id : " + request.payload._id);
+        reply(request.payload);
     });
 };
 
@@ -33,7 +31,7 @@ server.route([
     {
         method: 'POST',
         path: '/push',
-        handler: helloPostHandler
+        handler: pushPostHandler
     }
 ]);
 
