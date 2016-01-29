@@ -14,13 +14,13 @@ npm start
 ## Send POST with :
 
 ~~~ bash
-curl --data "name=Dojo" http://localhost:8000/push
+curl --data "field1=bla&field2=foo" http://localhost:8000/push
 ~~~
 
 ## Check collection content with :
 
 ~~~ bash
 mongo <<EOF
-db.logs.find()
+db.gargantua.find()
 EOF
 ~~~

@@ -9,11 +9,13 @@ server.connection({
     port: 8000
 });
 
-const db = require("./db.js")("logs");
+const mongoUrl = "mongodb://localhost:27017/test";
+const mongoCollection = "gargantua";
+const mongo = require("./mongo.js")(mongoUrl, mongoCollection);
 
 const pushPostHandler = function(request, reply) {
     console.log("Received POST : " + JSON.stringify(request.payload));
-    db.insert(request.payload, function(){
+    mongo.insert(request.payload, function(){
         console.log("Stored with _id : " + request.payload._id);
         reply(request.payload);
     });

@@ -1,11 +1,10 @@
-module.exports = function(collectionName) {
+module.exports = function(mongoUrl, collectionName) {
     var dbManager = {};
     var MongoClient = require('mongodb').MongoClient;
     var assert = require('assert');
-    var url = 'mongodb://localhost:27017/test';
     var db;
 
-    MongoClient.connect(url, function(err, dbTemp) {
+    MongoClient.connect(mongoUrl, function(err, dbTemp) {
         assert.equal(null, err);
         db = dbTemp;
     });
