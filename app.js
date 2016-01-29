@@ -9,13 +9,16 @@ server.connection({
     port: 8000
 });
 
-const helloPostHandler = function(request, reply) {
-    //console.log("rawPayload: " + request.rawPayload);
-    console.log("Received POST from " + request.payload.name + "; id=" + (request.payload.id || 'anon'));
+const db = require("./db.js")("logs");
 
-    reply({
-        greeting: 'POST hello to ' + request.payload.name
-    });
+const helloPostHandler = function(request, reply) {
+  db.insert(request.payload, function(){
+    console.log("Received POST from " + request.payload.name + "; id=" + (request.payload.id || 'anon'));
+  });
+
+  reply({
+    greeting: 'POST hello to ' + request.payload.name
+  });
 };
 
 // Add the route
