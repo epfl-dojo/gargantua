@@ -12,34 +12,33 @@ server.connection({
 const db = require("./db.js")("logs");
 
 const helloPostHandler = function(request, reply) {
-  db.insert(request.payload, function(){
-    console.log("Received POST from " + request.payload.name + "; id=" + (request.payload.id || 'anon'));
-  });
+    db.insert(request.payload, function(){
+        console.log("Received POST from " + request.payload.name + "; id=" + (request.payload.id || 'anon'));
+    });
 
-  reply({
-    greeting: 'POST hello to ' + request.payload.name
-  });
+    reply({
+        greeting: 'POST hello to ' + request.payload.name
+    });
 };
 
 // Add the route
 server.route([
-  {
-    method: 'GET',
-    path:'/hello',
-    handler: function (request, reply) {
-      return reply('hello world');
+    {
+        method: 'GET',
+        path:'/hello',
+        handler: function (request, reply) {
+            return reply('hello world');
+        }
+    },
+    {
+        method: 'POST',
+        path: '/push',
+        handler: helloPostHandler
     }
-  },
-  {
-    method: 'POST',
-    path: '/push',
-    handler: helloPostHandler
-  }
 ]);
 
 // Start the server
 server.start((err) => {
-
     if (err) {
         throw err;
     }
