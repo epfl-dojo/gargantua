@@ -1,19 +1,28 @@
 {
-    "name": "gargantua",
-    "version": "1.0.0",
-    "description": "Receive logs from anyPC",
-    "main": "app.js",
-    "scripts": {
-        "start": "node app.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "dependencies":{
-        "hapi": "*",
-        "mongodb": "*"
-    },
-    "keywords": [
-        "logs"
-    ],
-    "author": "Dojo EPFL",
-    "license": "MIT"
+  "name": "gargantua",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/epfl-dojo/gargantua"
+  },
+  "description": "Receive logs from anyPC",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "hapi": "*",
+    "mongodb": "*"
+  },
+  "devDependencies": {
+    "webdriverio": "^4.0.3",
+    "mocha": "^2.4.5",
+    "phantomjs-prebuilt": "^2.1.4"
+  },
+  "keywords": [
+    "logs"
+  ],
+  "author": "Dojo EPFL",
+  "license": "MIT"
 }
