@@ -40,6 +40,12 @@ Run Selenium server :
 PATH=$PATH:node_modules/phantomjs-prebuilt/bin/ java -jar webdriverio-test/selenium-server-standalone-2.51.0.jar
 ~~~
 
+or simply :
+
+~~~ bash
+npm run-script serveSelenium
+~~~
+
 Run Test :
 
 ~~~ bash

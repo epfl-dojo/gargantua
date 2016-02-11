@@ -9,6 +9,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "serveSelenium": "java -jar ./webdriverio-test/selenium-server-standalone-2.51.0.jar",
     "test": "mocha"
   },
   "dependencies": {
