@@ -11,27 +11,19 @@ describe('my webdriverio tests', function(){
     var client = {};
 
     before(function(done){
-            client = webdriverio.remote(options);
-            client
-                .init()
-                .call(done);
+        client = webdriverio.remote(options);
+        client
+            .init()
+            .call(done);
     });
 
-    it('Github test', function(done){
+    it('Respond to GET', function(done){
         client
-            .url('https://github.com/')
-            .getElementSize('.header-logo-wordmark', function(err, result){
-                assert(err === undefined);
-                assert(result.height === 26);
-                assert(result.width  === 89);
-            })
-            .getTitle(function(err, title){
-                assert(err === undefined);
-                assert(title === 'GitHub · Where software is built');
-            })
-            .getCssProperty('a[href="/plans"]', 'color', function(err, result){
-                assert(err === undefined);
-                assert(result.value === 'rgba(64,120,192,1)');
+            .url('http://localhost:8000/')
+            .getText("body").then(function(text){
+                var data = JSON.parse(text);
+                // console.log(JSON.stringify(data));
+                assert.deepEqual(data, {statusCode: 404, error: "Not Found"});
             })
             .call(done);
     });
