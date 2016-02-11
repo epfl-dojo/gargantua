@@ -17,16 +17,32 @@ describe('GET and POST requests', function(){
             .call(done);
     });
 
-    it('Respond to / GET', function(done){
+    it('Respond html to / GET', function(done){
         client
             .url('http://localhost:8000/')
-            .getText("body").then(function(text){
-                var data = JSON.parse(text);
-                // console.log(JSON.stringify(data));
-                assert.deepEqual(data, {statusCode: 404, error: "Not Found"});
+            .getTitle().then(function(title){
+                assert.equal(title, "Home");
+            })
+            .getText("h1").then(function(text){
+                assert.equal(text, "Gargantua");
             })
             .call(done);
     });
+    it('Respond JSON to /hello GET', function(done){
+        client
+            .url('http://localhost:8000/hello')
+            .getText("body").then(function(text){
+                var data = JSON.parse(text);
+                // console.log(JSON.stringify(data));
+                assert.deepEqual(data, {answer: "hello world"});
+            })
+            .call(done);
+    });
+
+    xit('Respond JSON to /push POST', function(done){
+        client
+            .call(done);
+    })
 
     after(function(done){
         client

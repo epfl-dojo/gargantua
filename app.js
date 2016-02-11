@@ -6,6 +6,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
+app.set('views', './views');
+app.set('view engine', 'jade');
+
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
@@ -23,7 +26,7 @@ const pushPostHandler = function(req, res) {
 
 // Add the routes
 app.get('/', function (req, res) {
-    res.json({statusCode: 404, error: "Not Found"});
+    res.render('index', { title: 'Home', h1: 'Gargantua'});
 });
 app.get('/hello', function (req, res) {
     res.json({answer: 'hello world'});
