@@ -6,7 +6,7 @@ var webdriverio = require('webdriverio'),
         }
     };
 
-describe('my webdriverio tests', function(){
+describe('GET and POST requests', function(){
     this.timeout(15000);
     var client = {};
 
@@ -17,7 +17,7 @@ describe('my webdriverio tests', function(){
             .call(done);
     });
 
-    it('Respond to GET', function(done){
+    it('Respond to / GET', function(done){
         client
             .url('http://localhost:8000/')
             .getText("body").then(function(text){
