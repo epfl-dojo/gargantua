@@ -39,8 +39,19 @@ describe('GET and POST requests', function(){
             .call(done);
     });
 
-    xit('Respond JSON to /push POST', function(done){
+    it('Respond JSON to /push POST', function(done){
         client
+            .url('http://localhost:8000/test')
+            .setValue("input[name=field1]", "fooo")
+            .setValue("input[name=field2]", "bar")
+            .submitForm("#push1")
+            .getText("body").then(function(text){
+                var data = JSON.parse(text);
+                // console.log(JSON.stringify(data));
+                assert.equal(data.field1, "fooo");
+                assert.equal(data.field2, "bar");
+                assert.equal(typeof(data._id), "string");
+            })
             .call(done);
     })
 

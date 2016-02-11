@@ -25,15 +25,18 @@ const pushPostHandler = function(req, res) {
 };
 
 // Add the routes
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
     res.render('index', { title: 'Home', h1: 'Gargantua'});
 });
-app.get('/hello', function (req, res) {
+app.get('/hello', function(req, res) {
     res.json({answer: 'hello world'});
 });
 app.post('/push', pushPostHandler);
+app.get('/test', function(req, res){
+    res.render('test', { title: 'test', h1: 'Gargantua - test-page'});
+});
 
 // Start the server
-app.listen(port, function () {
+app.listen(port, function() {
     console.log('Example app listening on http://localhost:' + port + ' ...');
 });
