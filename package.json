@@ -9,7 +9,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "serveSelenium": "java -jar ./webdriverio-test/selenium-server-standalone-2.51.0.jar",
+    "serveSelenium": "java -jar ./webdriverio-test/selenium-server-standalone-2.52.0.jar",
     "test": "mocha"
   },
   "dependencies": {
@@ -19,9 +19,11 @@
     "mongodb": "*"
   },
   "devDependencies": {
-    "webdriverio": "^4.0.3",
+    "bunyan": "^1.6.0",
     "mocha": "^2.4.5",
-    "phantomjs-prebuilt": "^2.1.4"
+    "phantomjs-prebuilt": "^2.1.4",
+    "request": "^2.69.0",
+    "webdriverio": "^4.0.3"
   },
   "keywords": [
     "logs"
