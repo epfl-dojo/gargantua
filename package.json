@@ -8,6 +8,7 @@
   "description": "Receive logs from anyPC",
   "main": "app.js",
   "scripts": {
+    "prestart": "npm install",
     "start": "node app.js",
     "serveSelenium": "java -jar ./webdriverio-test/selenium-server-standalone-2.52.0.jar",
     "test": "mocha"
